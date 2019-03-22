@@ -66,7 +66,7 @@ def parChecker2(SymbolStr):
 
     while idx < len_str and balanced:
         symbol = SymbolStr[idx]
-        if SymbolStr[idx] in '[({':
+        if symbol in '[({':
             my_stack.push(symbol)
 
         else:
@@ -111,3 +111,43 @@ def baseConverter(decNumber, base):
 
 
 print(baseConverter(26, 26))
+
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+class Stack:
+
+    def __init__(self):
+        self.items = []
+
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        return self.items.pop()
+
+    def maxVal(self):
+        return max(self.items)
+
+
+if __name__ == "__main__":
+    N = int(input())
+
+    op_list = []
+    for n in range(N):
+        op_list.append(input())
+
+    stack = Stack()
+    for op in op_list:
+        op_idx = int(op.split()[0])
+        print(op_idx)
+
+        if op_idx == 1:
+            toPush = op.split()[1]
+            stack.push(toPush)
+
+        elif op_idx == 2:
+            stack.pop()
+
+        else:
+            print(stack.maxVal)
